@@ -7,11 +7,11 @@ class Application:
 
     def __init__(self, browser, base_url):
         if browser == 'chrome':
-            self.wd = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
-        elif browser == 'firefox':
-            self.wd = webdriver.Firefox(executable_path='/usr/local/bin/geckodriver')
-        elif browser == 'safari':
-            self.wd = webdriver.Safari(executable_path='/usr/bin/safaridriver')
+            self.wd = webdriver.Chrome(executable_path='C:\webdriver\chromedriver.exe')
+        #elif browser == 'firefox':
+            #self.wd = webdriver.Firefox(executable_path='/usr/local/bin/geckodriver')
+        #elif browser == 'safari':
+            #self.wd = webdriver.Safari(executable_path='/usr/bin/safaridriver')
         else:
             raise ValueError('Unrecognized browser %s' % browser)
         self.session = SessionHelper(self)
