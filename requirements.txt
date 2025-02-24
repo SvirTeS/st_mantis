@@ -5,3 +5,4 @@ jsonpickle
 PyMySQL
 pony
 ftputil
+suds-jurko
