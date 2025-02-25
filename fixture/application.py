@@ -1,12 +1,13 @@
 from selenium import webdriver
 from fixture.session import SessionHelper
 from fixture.project import ProjectHelper
-from fixture.soap import SoapHelper
+#from fixture.soap import SoapHelper
+from fixture.james import JamesHelper
 
 
 class Application:
 
-    def __init__(self, browser, base_url):
+    def __init__(self, browser, config):
         if browser == 'chrome':
             self.wd = webdriver.Chrome(executable_path='C:\webdriver\chromedriver.exe')
         #elif browser == 'firefox':
@@ -16,9 +17,11 @@ class Application:
         else:
             raise ValueError('Unrecognized browser %s' % browser)
         self.session = SessionHelper(self)
-        self.base_url = base_url
         self.project = ProjectHelper(self)
-        self.soap = SoapHelper(self)
+        #self.soap = SoapHelper(self)
+        self.james = JamesHelper(self)
+        self.config = config
+        self.base_url = config['web']['baseUrl']
 
     def open_home_page(self):
         wd = self.wd
