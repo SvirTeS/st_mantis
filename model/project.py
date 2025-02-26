@@ -3,8 +3,8 @@ from sys import maxsize
 
 class Project:
 
-    def __init__(self, projectname, status=None, description=None, viewstatus=None, id=None, igc=None):
-        self.projectname = projectname
+    def __init__(self, name=None, status=None, description=None, viewstatus=None, id=None, igc=None):
+        self.name = name
         self.status = status
         self.description = description
         self.viewstatus = viewstatus
@@ -12,10 +12,10 @@ class Project:
         self.igc = igc
 
     def __repr__(self):
-        return "%s" % self.projectname
+        return "%s" % self.name
 
     def __eq__(self, other):
-        return self.projectname == other.projectname
+        return self.name == other.name
 
     def id_or_max(self):
         if self.id:
@@ -23,5 +23,5 @@ class Project:
         else:
             return maxsize
 
-    def projectname(self):
-        return self.projectname
+    def name(self):
+        return self.name

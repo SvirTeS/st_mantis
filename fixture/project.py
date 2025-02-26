@@ -52,7 +52,7 @@ class ProjectHelper:
 
     def fill_project_data(self, project):
         wd = self.app.wd
-        self.change_project_fill_value(field_name='name', text=project.projectname)
+        self.change_project_fill_value(field_name='name', text=project.name)
         self.change_project_status(project.status)
         self.change_project_viewstatus(project.viewstatus)
         self.change_project_fill_value(field_name='description', text=project.description)
@@ -97,6 +97,6 @@ class ProjectHelper:
                 igc = cells[2].text.strip()
                 viewstatus = cells[3].text.strip()
                 description = cells[4].text.strip()
-                self.project_cache.append(Project(id=id, projectname=projectname, status=status,
+                self.project_cache.append(Project(id=id, name=projectname, status=status,
                                                   igc=igc, description=description, viewstatus=viewstatus))
         return list(self.project_cache)

@@ -4,5 +4,6 @@ pytest==8.2.2
 jsonpickle
 PyMySQL
 pony
-ftputil
-suds-jurko
+ftputil~=5.1.0
+suds-jurko==0.6
+zeep==4.3.1
