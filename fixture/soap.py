@@ -1,5 +1,7 @@
 from zeep import Client
 from zeep.exceptions import Fault
+from fixture.project import Project
+
 
 class SoapHelper:
     def __init__(self, app):
@@ -18,9 +20,21 @@ class SoapHelper:
     def get_project_list_from_soap(self):
         client = Client("http://localhost/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl")
         try:
-            get_projects = client.service.mc_projects_get_user_accessible(self.app.config["webadmin"]["username"],
+            l = client.service.mc_projects_get_user_accessible(self.app.config["webadmin"]["username"],
                                                                   self.app.config["webadmin"]["password"])
-            return get_projects
+            project_list = []
+            for element in l:
+                name = element.name
+                status = element.status.name
+                id = element.id
+                description = element.description
+                #enabled = element.enabled
+                view_status = element.view_state.name
+                project_list.append(Project(name=name, status=status, view_status=view_status,
+                                            description=description, id=id))
+            return project_list
+
+            #return get_projects
 
         except Fault:
             return False

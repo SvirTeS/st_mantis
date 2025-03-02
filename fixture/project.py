@@ -44,17 +44,17 @@ class ProjectHelper:
             wd.find_element_by_name('status').click
             Select(wd.find_element_by_name('status')).select_by_value(status)
 
-    def change_project_viewstatus(self, viewstatus):
+    def change_project_view_status(self, view_status):
         wd = self.app.wd
-        if viewstatus is not None:
-            wd.find_element_by_name('viewstatus').click
-            Select(wd.find_element_by_name('viewstatus')).select_by_value(viewstatus)
+        if view_status is not None:
+            wd.find_element_by_name('view_status').click
+            Select(wd.find_element_by_name('view_status')).select_by_value(view_status)
 
     def fill_project_data(self, project):
         wd = self.app.wd
         self.change_project_fill_value(field_name='name', text=project.name)
         self.change_project_status(project.status)
-        self.change_project_viewstatus(project.viewstatus)
+        self.change_project_view_status(project.view_status)
         self.change_project_fill_value(field_name='description', text=project.description)
 
     def save_new_project(self):
@@ -95,8 +95,8 @@ class ProjectHelper:
                 projectname = cells[0].text.strip()
                 status = cells[1].text.strip()
                 igc = cells[2].text.strip()
-                viewstatus = cells[3].text.strip()
+                view_status = cells[3].text.strip()
                 description = cells[4].text.strip()
                 self.project_cache.append(Project(id=id, name=projectname, status=status,
-                                                  igc=igc, description=description, viewstatus=viewstatus))
+                                                  igc=igc, description=description, view_status=view_status))
         return list(self.project_cache)

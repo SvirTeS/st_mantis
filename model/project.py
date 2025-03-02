@@ -3,11 +3,11 @@ from sys import maxsize
 
 class Project:
 
-    def __init__(self, name=None, status=None, description=None, viewstatus=None, id=None, igc=None):
+    def __init__(self, name=None, status=None, description=None, view_status=None, id=None, igc=None):
         self.name = name
         self.status = status
         self.description = description
-        self.viewstatus = viewstatus
+        self.view_status = view_status
         self.id = id
         self.igc = igc
 
